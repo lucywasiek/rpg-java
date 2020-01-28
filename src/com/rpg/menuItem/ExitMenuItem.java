@@ -1,6 +1,7 @@
 package com.rpg.menuItem;
 
 public class ExitMenuItem implements MenuItem {
+
     @Override
     public String getLabel() {
 
@@ -9,6 +10,6 @@ public class ExitMenuItem implements MenuItem {
 
     @Override
     public void select() {
-        System.out.println("exitmenuitem: select");
+        System.exit(0);
     }
 }

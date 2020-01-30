@@ -1,8 +1,10 @@
 package com.rpg.map;
 
 import com.rpg.Coordinate;
+import com.rpg.KeyControl;
 import com.rpg.Player;
 import com.rpg.Window;
+import com.rpg.Window.Squares;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,21 +14,30 @@ public class GameMap {
     final int X_MAX = 12; // end of my line 'x'
     final int Y_MAX = 10;
 
+    private final Window window;
+
     Player player = new Player();
 
     List<Tile> map = new ArrayList<>();
 
     public GameMap() {
+        KeyControl keyControl = new KeyControl(player, this);
+        this.window = new Window(keyControl);
+
+        this.display();
+    }
+
+    public void createMap() {
+        map = new ArrayList<>();
         for (int index = 0; index < X_MAX * Y_MAX; index++){
             map.add(new EmptyTile());
         }
 
-        setTileOnCoordinates(player);
         setTileOnCoordinates(new BushTile(), 1, 2);
         setTileOnCoordinates(new BushTile(), 2, 2);
         setTileOnCoordinates(new BushTile(), 3, 2);
-
     }
+
 
     private void setTileOnCoordinates(TileWithCoordinates tile) {
         setTileOnCoordinates(tile, tile.getCoordinate());
@@ -45,7 +56,12 @@ public class GameMap {
     }
 
 
-    public void display(Window.Squares squares) {
+    public void display() {
+        Squares squares = new Window.Squares();
+
+        createMap();
+
+        setTileOnCoordinates(player);
 
         int i = 0;
 
@@ -61,11 +77,13 @@ public class GameMap {
             System.out.print(tile.getCharacter());
             i++;
         }
+        System.out.print("\n");
+        System.out.print("\n");
 
-        // display the map with outer walls
-        // - display tile.getCharacter()
-
-        // display the player
+        window.drawWindow(squares);
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 }

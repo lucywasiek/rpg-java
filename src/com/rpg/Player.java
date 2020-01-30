@@ -18,6 +18,22 @@ public class Player implements TileWithCoordinates {
         return Color.RED;
     }
 
+    public void moveUp() {
+        //player move to the upper case
+        coordinate.y = coordinate.y - 1;
+    }
+
+    public void moveLeft(){
+        coordinate.x = coordinate.x - 1;
+    }
+
+    public void moveRight(){
+        coordinate.x = coordinate.x + 1;
+    }
+
+    public void moveDown(){
+        coordinate.y = coordinate.y + 1;
+    }
 
     ///////////////////////////////// getters and setters
 
@@ -28,5 +44,9 @@ public class Player implements TileWithCoordinates {
 
     public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
+    }
+
+    public void debugCoordinates() {
+        System.out.println(coordinate.y + "." + coordinate.x);
     }
 }

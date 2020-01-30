@@ -1,11 +1,19 @@
 package com.rpg;
 
 
+import com.rpg.map.GameMap;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyControl implements KeyListener {
 
+    Player player = null;
+    GameMap gameMap = null;
+
+    public KeyControl(Player player, GameMap gameMap) {
+        this.player = player;
+        this.gameMap = gameMap;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -20,18 +28,22 @@ public class KeyControl implements KeyListener {
             switch (codeDeLaTouche) // Les valeurs sont contenue dans KeyEvent. Elles commencent par VK_ et finissent par le nom de la touche
             {
                 case KeyEvent.VK_UP: // si la touche enfoncée est celle du haut
-                    System.out.println("going up");
+                    player.moveUp();
+
+                    //System.out.println("going up");
                     break;
                 case KeyEvent.VK_LEFT: // si la touche enfoncée est celle de gauche
-                    System.out.println("going left");
+                    player.moveLeft();
                     break;
                 case KeyEvent.VK_RIGHT: // si la touche enfoncée est celle de droite
-                    System.out.println("going right");
+                    player.moveRight();
                     break;
                 case KeyEvent.VK_DOWN: // si la touche enfoncée est celle du bas
-                    System.out.println("going down");
+                    player.moveDown();
                     break;
             }
+            player.debugCoordinates();
+            gameMap.display();
         }
 
     @Override

@@ -1,7 +1,5 @@
 package com.rpg.menu.menuItem;
 
-import com.rpg.map.GameMap;
-
 public class SoloMenuItem implements MenuItem {
 
     @Override
@@ -12,7 +10,7 @@ public class SoloMenuItem implements MenuItem {
 
     @Override
     public void select() {
-        GameMap game = new GameMap();
+      //  GameMap game = new GameMap();
       //  game.display(squares);
     }
 }

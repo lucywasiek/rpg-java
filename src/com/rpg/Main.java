@@ -1,9 +1,6 @@
 package com.rpg;
 
-import com.rpg.menu.menuItem.SoloMenuItem;
-
-import java.awt.event.KeyEvent;
-import java.util.Scanner;
+import com.rpg.map.GameMap;
 
 public class Main {
 
@@ -18,7 +15,8 @@ public class Main {
 //        soloMenuItem.select();
 
 
-      Window window = new Window();
+        GameMap gameMap = new GameMap();
+
 
 
 

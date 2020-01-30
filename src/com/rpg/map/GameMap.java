@@ -6,19 +6,31 @@ import java.util.List;
 
 public class GameMap {
 
-    final int X_MAX = 10; // end of my line 'x'
+    final int X_MAX = 20; // end of my line 'x'
+    final int Y_MAX = 10;
+
+    List<Tile> map = new ArrayList<>();
+
+    public GameMap() {
+        for (int index = 0; index < X_MAX * Y_MAX; index++){
+            map.add(new EmptyTile());
+        }
+        setTileOnCoordinates(new BushTile(), 1, 2);
+        setTileOnCoordinates(new BushTile(), 2, 2);
+        setTileOnCoordinates(new BushTile(), 3, 2);
+
+    }
+
+    public void setTileOnCoordinates(Tile tile, int y, int x) {
+        map.set(getIndexForCoordinate(y, x), tile);
+    }
+
+    public int getIndexForCoordinate(int y, int x) {
+        return (y * X_MAX + x) - 1;
+    }
+
 
     public void display(){
-
-        List<Tile> map = new ArrayList<>();
-
-        map.add(new EmptyTile()); // 0.0
-        map.add(new EmptyTile()); // 0.1
-        map.add(new EmptyTile()); // 1.0
-        map.add(new EmptyTile()); // 1.1
-        map.add(new EmptyTile()); // 2.0
-        map.add(new EmptyTile()); // 2.1
-
 
         int i = 0;
 

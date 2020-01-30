@@ -13,6 +13,6 @@ public class SoloMenuItem implements MenuItem {
     @Override
     public void select() {
         GameMap game = new GameMap();
-        game.display();
+      //  game.display(squares);
     }
 }

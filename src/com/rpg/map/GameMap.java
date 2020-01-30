@@ -2,14 +2,14 @@ package com.rpg.map;
 
 import com.rpg.Coordinate;
 import com.rpg.Player;
-
+import com.rpg.Window;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class GameMap {
 
-    final int X_MAX = 20; // end of my line 'x'
+    final int X_MAX = 12; // end of my line 'x'
     final int Y_MAX = 10;
 
     Player player = new Player();
@@ -45,15 +45,19 @@ public class GameMap {
     }
 
 
-    public void display(){
+    public void display(Window.Squares squares) {
 
         int i = 0;
 
-        for (Tile tile : map){
+        for (Tile tile : map) {
 
             if ((i % X_MAX) == 0 && i != 0){
                 System.out.print("\n");
             }
+            int y = i / X_MAX;
+            int x = i % X_MAX;
+
+            squares.addSquare(x * 65, y * 65, 60, 60, tile.getColor());
             System.out.print(tile.getCharacter());
             i++;
         }

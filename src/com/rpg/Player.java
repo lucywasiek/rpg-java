@@ -1,7 +1,7 @@
 package com.rpg;
 
-import com.rpg.map.Tile;
 import com.rpg.map.TileWithCoordinates;
+import java.awt.Color;
 
 public class Player implements TileWithCoordinates {
 
@@ -11,6 +11,11 @@ public class Player implements TileWithCoordinates {
     @Override
     public char getCharacter() {
         return 'P';
+    }
+
+    @Override
+    public Color getColor() {
+        return Color.RED;
     }
 
 

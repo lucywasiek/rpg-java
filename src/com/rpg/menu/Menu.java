@@ -1,13 +1,10 @@
-package com.rpg;
+package com.rpg.menu;
 
-import com.rpg.menuItem.ExitMenuItem;
-import com.rpg.menuItem.MenuItem;
-import com.rpg.menuItem.MultiplayerMenuItem;
-import com.rpg.menuItem.SoloMenuItem;
+import com.rpg.menu.menuItem.ExitMenuItem;
+import com.rpg.menu.menuItem.MenuItem;
+import com.rpg.menu.menuItem.MultiplayerMenuItem;
+import com.rpg.menu.menuItem.SoloMenuItem;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Scanner;
 

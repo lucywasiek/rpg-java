@@ -1,4 +1,4 @@
-package com.rpg.menuItem;
+package com.rpg.menu.menuItem;
 
 public class MultiplayerMenuItem implements MenuItem {
 

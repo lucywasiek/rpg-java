@@ -1,4 +1,6 @@
-package com.rpg.menuItem;
+package com.rpg.menu.menuItem;
+
+import com.rpg.map.GameMap;
 
 public class SoloMenuItem implements MenuItem {
 
@@ -10,6 +12,7 @@ public class SoloMenuItem implements MenuItem {
 
     @Override
     public void select() {
-        System.out.println("SoloMenuItem: select");
+        GameMap game = new GameMap();
+        game.display();
     }
 }

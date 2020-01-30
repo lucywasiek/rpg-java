@@ -3,6 +3,7 @@ package com.rpg;
 
 import com.rpg.map.BushTile;
 import com.rpg.map.GameMap;
+import com.rpg.map.HoleTile;
 import com.rpg.map.Tile;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -11,6 +12,7 @@ public class KeyControl implements KeyListener {
 
     Player player = null;
     GameMap gameMap = null;
+
 
     public KeyControl(Player player, GameMap gameMap) {
         this.player = player;
@@ -60,6 +62,11 @@ public class KeyControl implements KeyListener {
             player.setCoordinate(backupCoordinate);
         }
             //si la tile c'est un trou -> tu perds
+
+        if (tile instanceof HoleTile) {
+           System.out.println("LOOSER !!");
+           System.exit(0);
+        }
 
 
             gameMap.display();

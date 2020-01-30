@@ -36,6 +36,7 @@ public class GameMap {
         setTileOnCoordinates(new BushTile(), 1, 2);
         setTileOnCoordinates(new BushTile(), 2, 2);
         setTileOnCoordinates(new BushTile(), 3, 2);
+        setTileOnCoordinates(new HoleTile(), 8, 5);
     }
 
 

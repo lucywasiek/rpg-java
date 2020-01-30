@@ -1,5 +1,8 @@
 package com.rpg.map;
 
+import com.rpg.Coordinate;
+import com.rpg.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,16 +12,28 @@ public class GameMap {
     final int X_MAX = 20; // end of my line 'x'
     final int Y_MAX = 10;
 
+    Player player = new Player();
+
     List<Tile> map = new ArrayList<>();
 
     public GameMap() {
         for (int index = 0; index < X_MAX * Y_MAX; index++){
             map.add(new EmptyTile());
         }
+
+        setTileOnCoordinates(player);
         setTileOnCoordinates(new BushTile(), 1, 2);
         setTileOnCoordinates(new BushTile(), 2, 2);
         setTileOnCoordinates(new BushTile(), 3, 2);
 
+    }
+
+    private void setTileOnCoordinates(TileWithCoordinates tile) {
+        setTileOnCoordinates(tile, tile.getCoordinate());
+    }
+
+    private void setTileOnCoordinates(Tile tile, Coordinate coordinate) {
+        setTileOnCoordinates(tile, coordinate.y, coordinate.x);
     }
 
     public void setTileOnCoordinates(Tile tile, int y, int x) {
@@ -26,7 +41,7 @@ public class GameMap {
     }
 
     public int getIndexForCoordinate(int y, int x) {
-        return (y * X_MAX + x) - 1;
+        return (y * X_MAX + Math.max(x - 1, 0));
     }
 
 

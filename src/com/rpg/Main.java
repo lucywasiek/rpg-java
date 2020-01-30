@@ -2,6 +2,9 @@ package com.rpg;
 
 import com.rpg.menu.menuItem.SoloMenuItem;
 
+import java.awt.event.KeyEvent;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,8 +14,13 @@ public class Main {
 //        menu.display();
 //        menu.selectMenuItem();
 
-        SoloMenuItem soloMenuItem = new SoloMenuItem();
-        soloMenuItem.select();
+//        SoloMenuItem soloMenuItem = new SoloMenuItem();
+//        soloMenuItem.select();
+
+
+      Window window = new Window();
+
+
 
     }
 }

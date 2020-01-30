@@ -55,6 +55,11 @@ public class GameMap {
         return (y * X_MAX + Math.max(x - 1, 0));
     }
 
+    public Tile getTileForCoordinates(Coordinate coordinate) {
+
+       int index = getIndexForCoordinate(coordinate.y, coordinate.x);
+       return map.get(index);
+    }
 
     public void display() {
         Squares squares = new Window.Squares();

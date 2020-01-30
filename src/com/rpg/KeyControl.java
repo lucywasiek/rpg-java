@@ -1,7 +1,9 @@
 package com.rpg;
 
 
+import com.rpg.map.BushTile;
 import com.rpg.map.GameMap;
+import com.rpg.map.Tile;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -24,6 +26,9 @@ public class KeyControl implements KeyListener {
     public void keyPressed(KeyEvent key) {
 
             int codeDeLaTouche = key.getKeyCode();
+                //creer un objet new coordinate = player.coordinate (voir; copy constructor)
+
+            Coordinate backupCoordinate = new Coordinate(player.getCoordinate());
 
             switch (codeDeLaTouche) // Les valeurs sont contenue dans KeyEvent. Elles commencent par VK_ et finissent par le nom de la touche
             {
@@ -43,6 +48,20 @@ public class KeyControl implements KeyListener {
                     break;
             }
             player.debugCoordinates();
+
+            //recuperer les coordinates du player
+            Coordinate coordinate = player.getCoordinate();
+
+            //recupere la tile des coordinates du player
+        Tile tile = gameMap.getTileForCoordinates(coordinate);
+
+            //si la tile c'est un bush -> remettre les anciennes coordinates
+        if (tile instanceof BushTile) {
+            player.setCoordinate(backupCoordinate);
+        }
+            //si la tile c'est un trou -> tu perds
+
+
             gameMap.display();
         }
 

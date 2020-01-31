@@ -12,7 +12,7 @@ import java.util.List;
 public class GameMap {
 
     final int X_MAX = 12; // end of my line 'x'
-    final int Y_MAX = 10;
+    final int Y_MAX = 12;
 
     private final Window window;
 
@@ -29,15 +29,36 @@ public class GameMap {
 
     public void createMap() {
         map = new ArrayList<>();
-        for (int index = 0; index < X_MAX * Y_MAX; index++){
+        for (int index = 0; index < X_MAX * Y_MAX; index++) {
             map.add(new EmptyTile());
         }
 
-        setTileOnCoordinates(new BushTile(), 1, 2);
-        setTileOnCoordinates(new BushTile(), 2, 2);
-        setTileOnCoordinates(new BushTile(), 3, 2);
-        setTileOnCoordinates(new HoleTile(), 8, 5);
+        setTileOnCoordinates(new HoleTile(), 9, 10);
+        setTileOnCoordinates(new HoleTile(), 6, 9);
+        setTileOnCoordinates(new HoleTile(), 5, 5);
+        setTileOnCoordinates(new GoldenTile(), 5, 8);
+        setTileOnCoordinates(new BushTile(), 2, 3);
+        setTileOnCoordinates(new BushTile(), 3, 3);
+        setTileOnCoordinates(new BushTile(), 10, 8);
+        setTileOnCoordinates(new BushTile(), 2, 9);
+        setTileOnCoordinates(new BushTile(), 7, 3);
+        setTileOnCoordinates(new BushTile(), 7, 2);
+        setTileOnCoordinates(new BushTile(), 4, 7);
+        setTileOnCoordinates(new BushTile(), 5, 7);
+        setTileOnCoordinates(new BushTile(), 2, 5);
+
+        for (int y = 0; y < Y_MAX; y++) {
+            setTileOnCoordinates(new WallTile(), y, X_MAX - 1);
+            setTileOnCoordinates(new WallTile(), y, 0);
+        }
+
+        for (int x = 0; x < X_MAX; x++) {
+            setTileOnCoordinates(new WallTile(), Y_MAX - 1, x);
+            setTileOnCoordinates(new WallTile(), 0, x);
+        }
+
     }
+
 
 
     private void setTileOnCoordinates(TileWithCoordinates tile) {
@@ -53,7 +74,8 @@ public class GameMap {
     }
 
     public int getIndexForCoordinate(int y, int x) {
-        return (y * X_MAX + Math.max(x - 1, 0));
+       // return (y * X_MAX + Math.max(x - 1, 0));
+        return(x + X_MAX * y);
     }
 
     public Tile getTileForCoordinates(Coordinate coordinate) {
@@ -79,7 +101,8 @@ public class GameMap {
             int y = i / X_MAX;
             int x = i % X_MAX;
 
-            squares.addSquare(x * 65, y * 65, 60, 60, tile.getColor());
+
+            squares.addSquare(x * 62, y * 62, 60, 60, tile.getColor());
             System.out.print(tile.getCharacter());
             i++;
         }

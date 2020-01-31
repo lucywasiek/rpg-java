@@ -5,7 +5,7 @@ import java.awt.Color;
 
 public class Player implements TileWithCoordinates {
 
-    private Coordinate coordinate = new Coordinate(0, 0);
+    private Coordinate coordinate = new Coordinate(1, 2);
 
 
     @Override

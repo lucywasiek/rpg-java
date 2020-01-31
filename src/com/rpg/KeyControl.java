@@ -5,6 +5,7 @@ import com.rpg.map.BushTile;
 import com.rpg.map.GameMap;
 import com.rpg.map.HoleTile;
 import com.rpg.map.Tile;
+import com.rpg.map.WallTile;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -57,6 +58,11 @@ public class KeyControl implements KeyListener {
             //recupere la tile des coordinates du player
         Tile tile = gameMap.getTileForCoordinates(coordinate);
 
+        //si la tile est un wall, meme effet aue pour les bushes
+        if (tile instanceof WallTile) {
+            player.setCoordinate(backupCoordinate);
+        }
+
             //si la tile c'est un bush -> remettre les anciennes coordinates
         if (tile instanceof BushTile) {
             player.setCoordinate(backupCoordinate);
@@ -67,6 +73,7 @@ public class KeyControl implements KeyListener {
            System.out.println("LOOSER !!");
            System.exit(0);
         }
+
 
 
             gameMap.display();

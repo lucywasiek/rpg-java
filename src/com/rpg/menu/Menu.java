@@ -20,7 +20,7 @@ public class Menu {
     }
 
 
-    void display() {
+    public void display() {
         // loop every element of my array of items
         int index = 1;
         for (MenuItem menuItem : menuItems) {
@@ -30,7 +30,7 @@ public class Menu {
 
     }
 
-    void selectMenuItem() {
+    public void selectMenuItem() {
         System.out.println("Choose an option");
         Scanner input = new Scanner(System.in);
         int number = input.nextInt();

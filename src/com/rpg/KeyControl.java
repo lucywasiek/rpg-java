@@ -3,6 +3,7 @@ package com.rpg;
 
 import com.rpg.map.BushTile;
 import com.rpg.map.GameMap;
+import com.rpg.map.GoldenTile;
 import com.rpg.map.HoleTile;
 import com.rpg.map.Tile;
 import com.rpg.map.WallTile;
@@ -66,12 +67,18 @@ public class KeyControl implements KeyListener {
             //si la tile c'est un bush -> remettre les anciennes coordinates
         if (tile instanceof BushTile) {
             player.setCoordinate(backupCoordinate);
+            player.reduceHp(5);
         }
             //si la tile c'est un trou -> tu perds
 
-        if (tile instanceof HoleTile) {
+        if (tile instanceof HoleTile || player.getHp() == 0) {
            System.out.println("LOOSER !!");
            System.exit(0);
+        }
+
+        if (tile instanceof GoldenTile) {
+            System.out.println("WINNER !!");
+            System.exit(0);
         }
 
 

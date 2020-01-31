@@ -5,8 +5,18 @@ import java.awt.Color;
 
 public class Player implements TileWithCoordinates {
 
+    private static final int DEFAULT_HP = 20;
     private Coordinate coordinate = new Coordinate(1, 2);
 
+    private int hp = DEFAULT_HP;
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void reduceHp(int hpReduce) {
+        this.hp = hp - hpReduce;
+    }
 
     @Override
     public char getCharacter() {

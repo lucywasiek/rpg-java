@@ -6,7 +6,7 @@ public class GoldenTile implements Tile {
 
     @Override
     public char getCharacter() {
-        return '0';
+        return ' ';
     }
 
     @Override

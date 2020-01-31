@@ -51,7 +51,7 @@ public class KeyControl implements KeyListener {
                     player.moveDown();
                     break;
             }
-            player.debugCoordinates();
+           // player.debugCoordinates();
 
             //recuperer les coordinates du player
             Coordinate coordinate = player.getCoordinate();

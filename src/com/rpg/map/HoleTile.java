@@ -6,7 +6,7 @@ public class HoleTile implements Tile {
 
     @Override
     public char getCharacter() {
-        return 'o';
+        return ' ';
     }
 
     @Override

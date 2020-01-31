@@ -6,7 +6,7 @@ public class EmptyTile implements Tile {
 
     @Override
     public char getCharacter() {
-        return '*';
+        return ' ';
     }
 
     @Override

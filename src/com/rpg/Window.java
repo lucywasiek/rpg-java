@@ -13,16 +13,11 @@ import javax.swing.JPanel;
 
 public class Window extends JFrame {
 
-    static final int SQUARE_WIDTH = 1200;
-    static final int SQUARE_HEIGHT = 1200;
+    public static final int WINDOW_WIDTH = 1200;
+    public static final int WINDOW_HEIGHT = 1200;
 
     public Window(KeyControl keyControl) {
-//        gameMap.display();
-//        for (int i = 0; i < 10; i++) {
-//           squares.addSquare(i * 60, i * 60, 60, 60);
-//        }
-
-        setSize(SQUARE_WIDTH, SQUARE_HEIGHT);
+        setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 
         addKeyListener(keyControl);
 
@@ -32,31 +27,38 @@ public class Window extends JFrame {
         requestFocusInWindow();
     }
 
-    public void drawWindow(Squares squares) {
+    public void drawWindow(Squares squares, TextView textView, TextView textView2) {
         Container container = getContentPane();
         container.removeAll();
+
+        squares.addText(textView, textView2);
+
         container.add(squares);
 
         setVisible(true);//now frame willbe visible, bydefault not visible
 
+//        pack();
+//        setSize(Window.WINDOW_WIDTH, Window.WINDOW_HEIGHT);
+//        setVisible(true);
 //
 //        Container.removeAll();
 //        container.add(squares);
 //        squares.paint(container.getGraphics());
 //        container.invalidate();
 
-        container.validate();
+          container.validate();
 //        container.doLayout();
 
-//        pack();
     }
 
     public static class Squares extends JPanel {
-        private static final int PREF_W = SQUARE_WIDTH;
-        private static final int PREF_H = PREF_W;
+        private static final int PREF_W = WINDOW_HEIGHT;//1200;//
+        private static final int PREF_H = WINDOW_HEIGHT;//1200;//GameMap.Y_MAX * 62;
 
         private List<Rectangle> squares = new ArrayList<Rectangle>();
         private List<Color> colors = new ArrayList<>();
+        private TextView textView;
+        private TextView textView2;
 
 //        public void reset() {
 //            this.squares = new ArrayList<>();
@@ -80,8 +82,8 @@ public class Window extends JFrame {
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D) g;
-            g2.clearRect(0,0, 1000, 1000);
-
+            g2.clearRect(0,0, PREF_W, PREF_H);
+//            g2.clearRect(0,0, 1000, 1000);
             int index = 0;
             for (Rectangle rect : squares) {
                 g2.setColor(colors.get(index));
@@ -89,8 +91,15 @@ public class Window extends JFrame {
                 g2.fill(rect);
                 index++;
             }
+
+            this.textView.paint(g);
+            this.textView2.paint(g);
         }
 
+        public void addText(TextView textView, TextView textView2) {
+            this.textView = textView;
+            this.textView2 = textView2;
+        }
     }
 
 }

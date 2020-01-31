@@ -3,6 +3,7 @@ package com.rpg.map;
 import com.rpg.Coordinate;
 import com.rpg.KeyControl;
 import com.rpg.Player;
+import com.rpg.TextView;
 import com.rpg.Window;
 import com.rpg.Window.Squares;
 import java.util.ArrayList;
@@ -11,8 +12,8 @@ import java.util.List;
 
 public class GameMap {
 
-    final int X_MAX = 12; // end of my line 'x'
-    final int Y_MAX = 12;
+    public static final int X_MAX = 12; // end of my line 'x'
+    public static final int Y_MAX = 12;
 
     private final Window window;
 
@@ -103,13 +104,15 @@ public class GameMap {
 
 
             squares.addSquare(x * 62, y * 62, 60, 60, tile.getColor());
-            System.out.print(tile.getCharacter());
+          //  System.out.print(tile.getCharacter());
             i++;
         }
         System.out.print("\n");
         System.out.print("\n");
 
-        window.drawWindow(squares);
+        TextView hpTextView = new TextView("PLAYER 1 --> " + String.valueOf(player.getHp()) + " HP", 100, Window.WINDOW_WIDTH - 200);
+        TextView rulesTextView = new TextView("RULES in README", 120, Window.WINDOW_WIDTH - 200);
+        window.drawWindow(squares, hpTextView, rulesTextView);
     }
 
     public Player getPlayer() {

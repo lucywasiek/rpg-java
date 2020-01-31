@@ -56,7 +56,7 @@ public class Player implements TileWithCoordinates {
         this.coordinate = coordinate;
     }
 
-    public void debugCoordinates() {
-        System.out.println(coordinate.y + "." + coordinate.x);
-    }
+//    public void debugCoordinates() {
+//        System.out.println(coordinate.y + "." + coordinate.x);
+//    }
 }

@@ -77,7 +77,7 @@ public class KeyControl implements KeyListener {
         }
 
         if (tile instanceof GoldenTile) {
-            System.out.println("WINNER !!");
+            System.out.println("WINNER !! Vous avez battu tous les records !");
             System.exit(0);
         }
 
